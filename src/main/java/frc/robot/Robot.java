@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger; 
 
@@ -19,16 +20,16 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot{
-  public static final int XboxController = 1; 
+public class Robot extends TimedRobot{ 
   public static final int lenght  = 100;
 
-  private static final AddressableLEDBuffer m_ledBuffer = null;
-  private static final AddressableLED m_led = null;
+  
+  AddressableLED m_led = new AddressableLED(0);
+  AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(lenght);
   XboxController m_1controller = new XboxController(1);
-   XboxController m_2controller = new XboxController(1);
   AddressableLEDBuffer m_AddressableLEDBuffer = new AddressableLEDBuffer(lenght);
- 
+  XboxControllerSim m_1boxControllerSim = new XboxControllerSim(1); 
+  XboxControllerSim m_2boxControllerSim = new XboxControllerSim(2); 
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -36,15 +37,21 @@ public class Robot extends TimedRobot{
 
   
     
-  public void   clear (){
+  public void clear () {
+    for (int i = 0; i < m_ledBuffer.getLength(); i++) {    
+      m_ledBuffer.setRGB(i, 122, 0, 0);
+    }
+   }
+  
+  
    
 
-    }
-   
-  
-  
-   @Override
-  public void robotInit() {}
+
+
+  @Override
+  public void robotInit() {
+    m_led.start();
+  }
 
   @Override
   public void robotPeriodic() {
@@ -56,18 +63,17 @@ public class Robot extends TimedRobot{
   
   AddressableLED m_led = new AddressableLED(9);
   
-    for (var i = 0; i < m_ledBuffer.getLength(); i++); {
-       m_ledBuffer.setRGB(i, 255, 0 , 0 ); 
-    // Sets the specified LED to the RGB values for red
-    }
+    
     
   
- new AddressableLED(9);
-  XboxController m_XboxController = new XboxController(1);
-  m_2controller.getXButton();
+
+ 
+  
+  
   CommandXboxController exampleCommandController = new CommandXboxController(1);
-  Trigger xButton = exampleCommandController.x();  
-  Trigger  xbuttion = new Trigger(xbuttion); 
+Trigger xButton = exampleCommandController.x();  
+  Trigger  xbuttion = new Trigger(xButton); 
+  edu.wpi.first.wpilibj.XboxController x;
   
 
 }
@@ -87,7 +93,26 @@ public class Robot extends TimedRobot{
   public void teleopInit() {}
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic(){
+  if  (m_1controller.getAButton()){
+   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
+    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
+      
+   };} 
+    
+     
+      if (m_1controller.getAButton()){
+        for (int i = 100; 1 > m_ledBuffer.getLength(); i++)
+      {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+      }
+   
+if  (m_1controller.getAButton()){
+   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
+    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+    
+   };}
+  
+  }
 
   @Override
   public void disabledInit() {}
