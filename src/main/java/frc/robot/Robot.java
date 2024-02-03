@@ -22,11 +22,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class Robot extends TimedRobot{ 
   public static final int lenght  = 100;
-
+ XboxController m_1controller = new XboxController(0);
   
   AddressableLED m_led = new AddressableLED(0);
   AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(lenght);
-  XboxController m_1controller = new XboxController(1);
   XboxController m_1boxController = new XboxController(1); 
   XboxController m_2boxController = new XboxController(2); 
   /**
@@ -35,10 +34,15 @@ public class Robot extends TimedRobot{
    */
    
   public void clear () {
-    for (int i = 1; i < m_ledBuffer.getLength(); i++) {    
-      m_ledBuffer.setRGB(i, 122, 0, 0);
-     for(var p2 =0;;); 
-}    m_ledBuffer.setRGB(lenght, 0, 122, 0);
+    
+    for (int player1pos =1;  player1pos < m_ledBuffer.getLength(); player1pos++) {    
+    for (int player2pos =2;  player2pos < m_ledBuffer.getLength(); player2pos++){
+    AddressableLEDBuffer.setRGB(i, 255, 0 , 0 ); 
+
+
+    }
+      
+    }   
 
 }
    
@@ -76,9 +80,9 @@ public class Robot extends TimedRobot{
   CommandXboxController exampleCommandController = new CommandXboxController(1);
 Trigger xButton = exampleCommandController.x();  
   Trigger  xbuttion = new Trigger(xButton); 
-  edu.wpi.first.wpilibj.XboxController x;
   
-  for(var p2 =0;; p2++);
+
+ 
     
   
 }
@@ -104,27 +108,20 @@ Trigger xButton = exampleCommandController.x();
     {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
       
    };} 
-    if (m_1controller.getBackButton()){
+    XboxController m_2controller;
+    if (m_2controller.getBackButton()){
         for (int i = -1; 1 > m_ledBuffer.getLength(); i++)
       {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
       }
    
      
-      if (m_1controller.getAButton()){
-        for (int i = 100; 1 > m_ledBuffer.getLength(); i++)
-      {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+    
       }
    
-if  (m_1controller.getAButton()){
-   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
-    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+
+  
     
-   };}
-  if  (m_ledBuffer.AddressableLEDBuffer()){
-   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
-    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
-    
-   };}
+   
   }
 
   @Override
