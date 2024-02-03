@@ -37,7 +37,7 @@ public class Robot extends TimedRobot{
     
     for (int player1pos =1;  player1pos < m_ledBuffer.getLength(); player1pos++) {    
     for (int player2pos =2;  player2pos < m_ledBuffer.getLength(); player2pos++){
-    AddressableLEDBuffer.setRGB(i, 255, 0 , 0 ); 
+    
 
 
     }
@@ -109,7 +109,7 @@ Trigger xButton = exampleCommandController.x();
       
    };} 
     XboxController m_2controller;
-    if (m_2controller.getBackButton()){
+    if (m_1controller.getBackButton()){
         for (int i = -1; 1 > m_ledBuffer.getLength(); i++)
       {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
       }
@@ -122,7 +122,7 @@ Trigger xButton = exampleCommandController.x();
   
     
    
-  }
+  
 
   @Override
   public void disabledInit() {}
