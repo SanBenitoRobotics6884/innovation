@@ -27,21 +27,24 @@ public class Robot extends TimedRobot{
   AddressableLED m_led = new AddressableLED(0);
   AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(lenght);
   XboxController m_1controller = new XboxController(1);
-  AddressableLEDBuffer m_AddressableLEDBuffer = new AddressableLEDBuffer(lenght);
-  XboxControllerSim m_1boxControllerSim = new XboxControllerSim(1); 
-  XboxControllerSim m_2boxControllerSim = new XboxControllerSim(2); 
+  XboxController m_1boxController = new XboxController(1); 
+  XboxController m_2boxController = new XboxController(2); 
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
-
-  
-    
+   
   public void clear () {
-    for (int i = 0; i < m_ledBuffer.getLength(); i++) {    
+    for (int i = 1; i < m_ledBuffer.getLength(); i++) {    
       m_ledBuffer.setRGB(i, 122, 0, 0);
-    }
-   }
+     for(var p2 =0;;); 
+}    m_ledBuffer.setRGB(lenght, 0, 122, 0);
+
+}
+   
+    
+  
+  
   
   
    
@@ -75,7 +78,9 @@ Trigger xButton = exampleCommandController.x();
   Trigger  xbuttion = new Trigger(xButton); 
   edu.wpi.first.wpilibj.XboxController x;
   
-
+  for(var p2 =0;; p2++);
+    
+  
 }
 
   private void rainbow() {
@@ -99,7 +104,11 @@ Trigger xButton = exampleCommandController.x();
     {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
       
    };} 
-    
+    if (m_1controller.getBackButton()){
+        for (int i = -1; 1 > m_ledBuffer.getLength(); i++)
+      {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
+      }
+   
      
       if (m_1controller.getAButton()){
         for (int i = 100; 1 > m_ledBuffer.getLength(); i++)
@@ -111,7 +120,11 @@ if  (m_1controller.getAButton()){
     {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
     
    };}
-  
+  if  (m_ledBuffer.AddressableLEDBuffer()){
+   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
+    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+    
+   };}
   }
 
   @Override
