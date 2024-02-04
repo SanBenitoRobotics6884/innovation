@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class Robot extends TimedRobot{ 
   public static final int lenght  = 100;
+  private static final AddressableLED m_AddressableLED = null;
  XboxController m_1controller = new XboxController(0);
   
   AddressableLED m_led = new AddressableLED(0);
@@ -31,14 +32,21 @@ public class Robot extends TimedRobot{
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
+   * @return 
    */
-   
-  public void clear () {
-    
+   public int player1pos = 1; 
+  public int player2pos = 2; 
+   public void clear () {
+    m_ledBuffer.setRGB(lenght, 255, 0, 0); 
     for (int player1pos =1;  player1pos < m_ledBuffer.getLength(); player1pos++) {    
     for (int player2pos =2;  player2pos < m_ledBuffer.getLength(); player2pos++){
-    
-
+   m_AddressableLED.setData (m_ledBuffer); 
+      for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+        // Sets the specified LED to the RGB values for red
+        m_ledBuffer.setRGB(i, 255, 0, 0);
+     }
+     
+     m_led.setData(m_ledBuffer);
 
     }
       
@@ -104,17 +112,19 @@ Trigger xButton = exampleCommandController.x();
   @Override
   public void teleopPeriodic(){
   if  (m_1controller.getAButton()){
-   for(int i = 0; i < m_ledBuffer.getLength(); i++) { 
+   for(int i = 100; i < m_ledBuffer.getLength(); i++) { 
     {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
       
    };} 
     XboxController m_2controller;
     if (m_1controller.getBackButton()){
-        for (int i = -1; 1 > m_ledBuffer.getLength(); i++)
-      {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
+        for (int i = -1; i > m_ledBuffer.getLength(); i++)
+      {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
       }
-   
-     
+   if  (m_1controller.getAButtonReleased()){
+   for(int i = -100; i < m_ledBuffer.getLength(); i++) { 
+    {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
+   };}
     
       }
    
