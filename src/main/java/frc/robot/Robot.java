@@ -4,15 +4,13 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.controller.PIDController;
+
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger; 
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,14 +19,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * project.
  */
 public class Robot extends TimedRobot{ 
-  public static final int lenght  = 100;
-  private static final AddressableLED m_AddressableLED = null;
- XboxController m_1controller = new XboxController(0);
-  
-  AddressableLED m_led = new AddressableLED(0);
+  public static final int lenght  = 80;
+  XboxController m_1controller = new XboxController(0);
+AddressableLED m_led = new AddressableLED(0);
   AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(lenght);
-  XboxController m_1boxController = new XboxController(1); 
-  XboxController m_2boxController = new XboxController(2); 
+  XboxController m_2boxController = new XboxController(1); 
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -40,13 +36,8 @@ public class Robot extends TimedRobot{
     m_ledBuffer.setRGB(lenght, 255, 0, 0); 
     for (int player1pos =1;  player1pos < m_ledBuffer.getLength(); player1pos++) {    
     for (int player2pos =2;  player2pos < m_ledBuffer.getLength(); player2pos++){
-   m_AddressableLED.setData (m_ledBuffer); 
-      for (var i = 0; i < m_ledBuffer.getLength(); i++) {
-        // Sets the specified LED to the RGB values for red
-        m_ledBuffer.setRGB(i, 255, 0, 0);
-     }
-     
-     m_led.setData(m_ledBuffer);
+   AddressableLED m_AddressableLED;
+    m_led.setData(m_ledBuffer);
 
     }
       
@@ -66,36 +57,13 @@ public class Robot extends TimedRobot{
   @Override
   public void robotInit() {
     m_led.start();
+ 
   }
 
   @Override
   public void robotPeriodic() {
-
-    // Fill the buffer with a rainbow
-    rainbow();
-    // Set the LEDs
-    m_led.setData(m_ledBuffer);
-  
-  AddressableLED m_led = new AddressableLED(9);
-  
-    
-    
-  
-
- 
-  
-  
-  CommandXboxController exampleCommandController = new CommandXboxController(1);
-Trigger xButton = exampleCommandController.x();  
-  Trigger  xbuttion = new Trigger(xButton); 
-  
-
- 
-    
-  
-}
-
-  private void rainbow() {
+  }
+private void rainbow() {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'rainbow'");
   }
@@ -112,21 +80,30 @@ Trigger xButton = exampleCommandController.x();
   @Override
   public void teleopPeriodic(){
   if  (m_1controller.getAButton()){
-   for(int i = 100; i < m_ledBuffer.getLength(); i++) { 
-    {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
+   var player1pos  = 80; 
+    
+   {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);} 
       
    };} 
-    XboxController m_2controller;
+    public class main {
+    public static void 
+    main(String[] args){
+   int i =80; 
+   i = i - 1; 
+  System.out.println(i); 
+    }
+      
+    }
+   
+   XboxController m_2controller;{
     if (m_1controller.getBackButton()){
-        for (int i = -1; i > m_ledBuffer.getLength(); i++)
-      {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
+       var player2pos  = 80;   
+     
+                
+       {m_ledBuffer.setRGB(lenght, lenght, lenght, lenght);}
       }
-   if  (m_1controller.getAButtonReleased()){
-   for(int i = -100; i < m_ledBuffer.getLength(); i++) { 
-    {m_ledBuffer.setRGB(-lenght, -lenght, -lenght, -lenght);}
-   };}
-    
-      }
+    }
+      
    
 
   
